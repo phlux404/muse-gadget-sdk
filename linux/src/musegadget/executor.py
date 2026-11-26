@@ -171,7 +171,7 @@ class Executor:
         started = time.monotonic()
         try:
             proc = subprocess.Popen(
-                ["/bin/bash", "-c", command], cwd=cwd,
+                [shutil.which("bash") or "/bin/bash", "-c", command], cwd=cwd,
                 stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                 bufsize=0,
                 **self._child_options(),
