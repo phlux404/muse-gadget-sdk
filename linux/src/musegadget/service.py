@@ -90,7 +90,7 @@ class Service:
     identity: Identity
     executor: Executor
     sdk_token: str | None = None
-    display_name: str = field(default_factory=socket.gethostname)
+    display_name: str = field(default_factory=lambda: os.environ.get("MUSEGADGET_DISPLAY_NAME") or socket.gethostname())
     # What the device is (protocols/DEVICE.md). describe() registers these and
     # sizes the commands with them; guide None leaves out device.guide.
     model_id: str = DEFAULT_MODEL_ID
